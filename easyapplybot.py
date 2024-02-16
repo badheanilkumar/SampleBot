@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import csv
 import logging
 import os
@@ -8,7 +7,6 @@ import random
 import re
 import time
 from datetime import datetime, timedelta
-import getpass
 from pathlib import Path
 
 import pandas as pd
@@ -109,7 +107,7 @@ class EasyApplyBot:
 
         #if qa file does not exist, create it
         if self.qa_file.is_file():
-            self.answers = pd.read_csv(self.qa_file, header=0,  squeeze=True).to_dict()
+            self.answers = pd.read_csv(self.qa_file, header=0).to_dict()
         #if qa file does exist, load it
         else:
             self.answers = {"Questions":"Answers"}
@@ -443,7 +441,7 @@ class EasyApplyBot:
                     log.info("please answer the questions")
                     time.sleep(15)
                     loop +=1
-                    # self.process_questions()
+                    self.process_questions()
 
                 elif len(self.get_elements("next")) > 0:
                     elements = self.get_elements("next")
@@ -471,7 +469,8 @@ class EasyApplyBot:
         return submitted
     def process_questions(self):
         time.sleep(1)
-        form = self.get_elements("fields") #self.browser.find_elements(By.CLASS_NAME, "jobs-easy-apply-form-section__grouping")
+        form = self.get_elements("fields")
+        self.browser.find_elements(By.CLASS_NAME, "jobs-easy-apply-form-section__grouping")
         for field in form:
             question = field.text
             answer = self.ans_question(question.lower())
@@ -515,7 +514,7 @@ class EasyApplyBot:
                 input = form.find_element(By.CLASS_NAME, "artdeco-text-input--input")
                 input.send_keys(answer)
 
-    def ans_question(self, question): #refactor this to an ans.yaml file
+    def ans_question(self, question):
         answer = None
         if "how many" in question:
             answer = random.randint(3, 12)
@@ -590,7 +589,7 @@ class EasyApplyBot:
     def next_jobs_page(self, position, location, jobs_per_page):
         self.browser.get(
             # URL for jobs page
-            "https://www.linkedin.com/jobs/search/?f_LF=f_AL&keywords=" +
+            "https://www.linkedin.com/jobs/search/?f_LF=f_AL&f_TPR=r604800&keywords=" +
             position + location + "&start=" + str(jobs_per_page))
         #self.avoid_lock()
         log.info("Loading next job page?")

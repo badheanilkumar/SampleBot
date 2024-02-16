@@ -1,31 +1,31 @@
-username: <username>
-password: <password>
-phone_number: <phone_number>
+username: badheanilkumar@gmail.com
+password: Ramakrishna@1
+phone_number: 9182727345
 
 profile_path: '' #can be empty, will default to 'C:\Users\<user>\AppData\Local\Google\Chrome\User Data\Default'
 
 
 positions:
-- <position title 1>
-- <position title 2>
-- <position title 3>
-
+- software engineer
+#- full stack developer
+#- product developer
 
 locations:
-- <state>
-- Remote
+- remote
 
-salary: <yearly salary>
-rate: <hourly rate>
+
+
+salary: 19
+rate: 800
 # --------- Optional Parameters -------
 uploads:
-  Resume: 'C:\Users\<user>\Documents\resume.docx'
-  Cover Letter: 'C:\Users\<user>\Documents\cover letter.docx'
+  Resume: 'C:\Users\badhe\Downloads\Anil_Resume_.pdf'
   #Photo: # PATH TO photo
 
 
 output_filename:
-- # PATH TO OUTPUT FILE (default output.csv)
+- C:\Users\badhe\Desktop\Easy\LinkedIn-Easy-Apply-Bot\output.csv
 
-# blacklist:
-# - # Company names you want to ignore
+blacklist:
+ - EPAM
+ - Tata Consultancy Services
