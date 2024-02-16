@@ -1,6 +1,6 @@
-username: badheanilkumar@gmail.com
-password: Ramakrishna@1
-phone_number: 9182727345
+username:
+password:
+phone_number:
 
 profile_path: '' #can be empty, will default to 'C:\Users\<user>\AppData\Local\Google\Chrome\User Data\Default'
 
